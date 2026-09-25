@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Дмитрий Жуков — чемпион мира по рукопашному бою</title>
+  <meta name="description" content="Дмитрий Жуков, мастер спорта, чемпион мира по рукопашному бою. Индивидуальные тренировки в Обнинске, СК «Олимп». Клуб «Чёрный тигр».">
+  <meta property="og:title" content="Дмитрий Жуков — WORLD CHAMP">
+  <meta property="og:description" content="Научу вас побеждать по жизни. Индивидуальные тренировки: дети, подростки, взрослые. Обнинск, СК «Олимп».">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://zhukov.vercel.app">
+  <meta property="og:image" content="https://zhukov.vercel.app/img/champ.png">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="https://fonts.bunny.net/css?family=press-start-2p:400|vt323:400" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.bunny.net/css?family=press-start-2p:400|vt323:400"></noscript>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip" href="#start">К кнопке записи</a>
+
+  <div class="cabinet">
+    <header class="hud" role="banner">
+      <div class="hud__p">1P <span>ZHUKOV</span></div>
+      <div class="hud__hp" aria-hidden="true">
+        <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+      </div>
+      <div class="hud__ko">KO</div>
+      <div class="hud__title">WORLD CHAMP</div>
+      <button type="button" class="hud__bgm is-on" id="bgm" aria-pressed="true">BGM ON</button>
+      <div class="hud__city">ОБНИНСК</div>
+    </header>
+
+    <section class="attract" aria-label="Первый экран">
+      <div class="arena" aria-hidden="true">
+        <div class="arena__sky"></div>
+        <div class="arena__mist"></div>
+        <svg class="arena__tiger" viewBox="0 0 160 80" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges">
+          <rect x="28" y="28" width="8" height="8" fill="#0b0a09"/>
+          <rect x="36" y="20" width="16" height="8" fill="#0b0a09"/>
+          <rect x="52" y="16" width="40" height="12" fill="#0b0a09"/>
+          <rect x="92" y="20" width="24" height="12" fill="#0b0a09"/>
+          <rect x="116" y="24" width="16" height="16" fill="#0b0a09"/>
+          <rect x="128" y="20" width="12" height="8" fill="#0b0a09"/>
+          <rect x="136" y="12" width="8" height="12" fill="#0b0a09"/>
+          <rect x="36" y="36" width="80" height="20" fill="#0b0a09"/>
+          <rect x="24" y="40" width="12" height="16" fill="#0b0a09"/>
+          <rect x="16" y="48" width="12" height="12" fill="#0b0a09"/>
+          <rect x="44" y="56" width="12" height="16" fill="#0b0a09"/>
+          <rect x="64" y="56" width="12" height="16" fill="#0b0a09"/>
+          <rect x="88" y="56" width="12" height="16" fill="#0b0a09"/>
+          <rect x="108" y="56" width="12" height="16" fill="#0b0a09"/>
+          <rect x="120" y="40" width="16" height="12" fill="#0b0a09"/>
+          <rect x="52" y="24" width="4" height="4" fill="#c9a227"/>
+          <rect x="68" y="24" width="4" height="4" fill="#c9a227"/>
+        </svg>
+        <div class="arena__rocks"></div>
+        <div class="arena__carpet">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+
+      <div class="fighter-stage">
+        <img class="fighter" id="fighter" src="img/"fighter.png" alt="" width="96" height="128">
+      </div>
+
+      <figure class="winner">
+        <div class="winner__frame">
+          <img src="img/"champ.png" alt="Дмитрий Жуков с чемпионским поясом на чемпионате мира по рукопашному бою">
+        </div>
+        <figcaption>WINNER · 97+</figcaption>
+      </figure>
+
+      <div class="attract__copy">
+        <button type="button" class="coin" id="coin">INSERT COIN</button>
+        <h1>Дмитрий Жуков</h1>
+        <p class="slogan">Научу вас побеждать по жизни</p>
+        <p class="lead">Чемпион мира по рукопашному бою. Не NPC из зала, а человек, который уже вышел на ковёр.</p>
+        <a class="btn js-tg" id="start" href="https://t.me/Dima_zhyck" target="_blank" rel="noopener noreferrer">START — написать в Telegram</a>
+      </div>
+    </section>
+
+    <section class="data" aria-labelledby="data-title">
+      <h2 id="data-title" class="sr">Карточка бойца</h2>
+      <figure class="portrait">
+        <img src="img/"gi.jpg" alt="Дмитрий Жуков в белом ги в зале СК Олимп">
+      </figure>
+      <dl class="sheet">
+        <div><dt>Класс</dt><dd>рукопашный бой</dd></div>
+        <div><dt>Статус</dt><dd>мастер спорта</dd></div>
+        <div><dt>Вес</dt><dd>свыше 97 кг</dd></div>
+        <div><dt>Титул</dt><dd>золото чемпионата мира</dd></div>
+        <div><dt>Состав</dt><dd>~200 бойцов, 22 страны</dd></div>
+        <div><dt>Клуб</dt><dd>«Чёрный тигр»</dd></div>
+        <div><dt>База</dt><dd>СК «Олимп», Обнинск</dd></div>
+      </dl>
+      <p class="data__note">На мировом первенстве дошёл до финала и увёз золото домой. Теперь тот же подход — на индивидуальной тренировке, без толпы и без «посмотрим по ходу».</p>
+    </section>
+
+    <section class="select" aria-labelledby="select-title">
+      <h2 id="select-title">SELECT YOUR FIGHTER</h2>
+      <ul class="slots">
+        <li>
+          <button type="button" class="slot" data-pick="ребёнок" aria-pressed="false">
+            <canvas class="slot__sprite" data-sprite="kid" width="96" height="128" aria-hidden="true"></canvas>
+            <h3>Ребёнок</h3>
+            <p>Характер, дисциплина, не «потыкали грушу».</p>
+          </button>
+        </li>
+        <li>
+          <button type="button" class="slot" data-pick="подросток" aria-pressed="false">
+            <canvas class="slot__sprite" data-sprite="teen" width="96" height="128" aria-hidden="true"></canvas>
+            <h3>Подросток</h3>
+            <p>Удар, голова, умение не сливаться.</p>
+          </button>
+        </li>
+        <li>
+          <button type="button" class="slot" data-pick="взрослый" aria-pressed="false">
+            <canvas class="slot__sprite" data-sprite="adult" width="96" height="128" aria-hidden="true"></canvas>
+            <h3>Взрослый</h3>
+            <p>Форма, уверенность, навык, который работает не только в зале.</p>
+          </button>
+        </li>
+      </ul>
+      <p class="select__foot">Выбери бойца. Тренер один.</p>
+    </section>
+
+    <section class="special" aria-labelledby="special-title">
+      <p class="special__tag">SPECIAL MOVE</p>
+      <h2 id="special-title">BLACK TIGER</h2>
+      <div class="special__art">
+        <img src="img/"kick.png" alt="">
+        <img src="img/"blast.png" alt="">
+      </div>
+      <ol class="inputs">
+        <li><kbd>&gt;&gt;</kbd> разбор под тебя, не общее занятие на 20 человек</li>
+        <li><kbd>v &gt;</kbd> дети, подростки, взрослые — слоты разные, ковёр один</li>
+        <li><kbd>P+K</kbd> индивидуальные тренировки в СК «Олимп»</li>
+      </ol>
+    </section>
+
+    <section class="continue" aria-labelledby="continue-title">
+      <p class="continue__timer" id="continue-timer">10</p>
+      <img class="continue__face" id="continue-face" src="img/"ko.png" alt="" hidden>
+      <h2 id="continue-title">CONTINUE?</h2>
+      <p>Первый раунд — напиши в Telegram.</p>
+      <a class="btn js-tg" href="https://t.me/Dima_zhyck" target="_blank" rel="noopener noreferrer">START · @Dima_zhyck</a>
+    </section>
+
+    <footer class="foot">
+      <p>«Чёрный тигр» · Обнинск · СК «Олимп»</p>
+      <p><a href="https://t.me/Dima_zhyck">Telegram</a> · <a href="https://www.instagram.com/zhucck/">Instagram</a></p>
+    </footer>
+  </div>
+
+  <div class="scan" aria-hidden="true"></div>
+  <script src="app.js"></script>
+</body>
+</html>
