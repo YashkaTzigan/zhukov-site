@@ -238,6 +238,7 @@ async function startBgm() {
     bootAudio();
     if (!audio) return;
     await audio.resume();
+    if (audio.state !== "running") return;
     if (playing) return;
     playing = true;
     timer = audio.currentTime + 0.05;
@@ -245,6 +246,7 @@ async function startBgm() {
     tick();
     setBgmUi(true);
   } catch (err) {
+    if (audio && audio.state === "running") return;
     playing = false;
     setBgmUi(false);
   }
@@ -266,7 +268,10 @@ document.getElementById("coin")?.addEventListener("click", () => {
   startBgm();
 });
 
-window.addEventListener("load", () => startBgm());
+document.getElementById("start")?.addEventListener("click", () => {
+  startBgm();
+});
+
 ["pointerdown", "keydown", "touchstart"].forEach((evt) => {
   window.addEventListener(evt, () => startBgm(), { once: true, passive: true });
 });
@@ -287,10 +292,13 @@ setInterval(() => {
 document.querySelectorAll(".slot").forEach((btn) => {
   btn.addEventListener("click", () => {
     bootAudio();
-    audio.resume();
-    const t = audio.currentTime + 0.01;
-    beep(880, 0.07, "square", 0.08, t);
-    beep(1320, 0.09, "square", 0.06, t + 0.06);
+    if (!audio) return;
+    audio.resume().then(() => {
+      if (!audio || audio.state !== "running") return;
+      const t = audio.currentTime + 0.01;
+      beep(880, 0.07, "square", 0.08, t);
+      beep(1320, 0.09, "square", 0.06, t + 0.06);
+    });
   });
 });
 

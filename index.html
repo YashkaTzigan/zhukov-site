@@ -27,7 +27,7 @@
       </div>
       <div class="hud__ko">KO</div>
       <div class="hud__title">WORLD CHAMP</div>
-      <button type="button" class="hud__bgm is-on" id="bgm" aria-pressed="true">BGM ON</button>
+      <button type="button" class="hud__bgm" id="bgm" aria-pressed="false">BGM OFF</button>
       <div class="hud__city">ОБНИНСК</div>
     </header>
 
@@ -76,7 +76,7 @@
         <h1>Дмитрий Жуков</h1>
         <p class="slogan">Научу вас побеждать по жизни</p>
         <p class="lead">Чемпион мира по рукопашному бою. Не NPC из зала, а человек, который уже вышел на ковёр.</p>
-        <a class="btn js-tg" id="start" href="https://t.me/Dima_zhyck" target="_blank" rel="noopener noreferrer">START — написать в Telegram</a>
+        <a class="btn" id="start" href="#select-title">CHOOSE YOUR FIGHTER</a>
       </div>
     </section>
 
@@ -102,21 +102,21 @@
       <ul class="slots">
         <li>
           <button type="button" class="slot" data-pick="ребёнок" aria-pressed="false">
-            <img class="slot__sprite" src="img/kid.png" alt="" width="96" height="160">
+            <img class="slot__sprite slot__sprite--kid" src="img/kid.png" alt="" width="96" height="140">
             <h3>Ребёнок</h3>
             <p>Характер, дисциплина, не «потыкали грушу».</p>
           </button>
         </li>
         <li>
           <button type="button" class="slot" data-pick="подросток" aria-pressed="false">
-            <img class="slot__sprite" src="img/teen.png" alt="" width="96" height="160">
+            <img class="slot__sprite slot__sprite--teen" src="img/teen.png" alt="" width="96" height="180">
             <h3>Подросток</h3>
             <p>Удар, голова, умение не сливаться.</p>
           </button>
         </li>
         <li>
           <button type="button" class="slot" data-pick="взрослый" aria-pressed="false">
-            <img class="slot__sprite" src="img/adult.png" alt="" width="96" height="160">
+            <img class="slot__sprite slot__sprite--adult" src="img/adult.png" alt="" width="96" height="230">
             <h3>Взрослый</h3>
             <p>Форма, уверенность, навык, который работает не только в зале.</p>
           </button>

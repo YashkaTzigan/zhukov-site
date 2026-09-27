@@ -381,6 +381,7 @@ h1 {
   font-size: clamp(12px, 2vw, 16px);
   color: var(--gold);
   line-height: 1.5;
+  scroll-margin-top: 72px;
 }
 
 .slots {
@@ -394,7 +395,10 @@ h1 {
 
 .slots > li { margin: 0; }
 .slot {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
   width: 100%;
   height: 100%;
   background: #071016;
@@ -419,9 +423,13 @@ h1 {
   margin: 0 auto 10px;
   image-rendering: auto;
   display: block;
-  height: 180px;
   width: auto;
+  object-fit: contain;
+  object-position: center bottom;
 }
+.slot__sprite--kid { height: 140px; }
+.slot__sprite--teen { height: 180px; }
+.slot__sprite--adult { height: 230px; }
 .slot h3 {
   margin: 0 0 8px;
   font-size: 12px;
