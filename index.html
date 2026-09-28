@@ -10,7 +10,6 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://yashkatzigan.github.io/zhukov-site/">
   <meta property="og:image" content="https://yashkatzigan.github.io/zhukov-site/img/champ.png">
-  <base href="/zhukov-site/">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="https://fonts.bunny.net/css?family=press-start-2p:400|vt323:400" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="https://fonts.bunny.net/css?family=press-start-2p:400|vt323:400"></noscript>
@@ -97,6 +96,11 @@
       <p class="data__note">На мировом первенстве дошёл до финала и увёз золото домой. Теперь тот же подход — на индивидуальной тренировке, без толпы и без «посмотрим по ходу».</p>
     </section>
 
+    <section class="offer" aria-labelledby="offer-title">
+      <h2 id="offer-title">Индивидуальные тренировки</h2>
+      <p>Занятие один на один с чемпионом мира в СК «Олимп», Обнинск. Не секция: всё время на ковре твоё. Техника, подготовка и нагрузка собираются под тебя. Беру детей с 6 лет, подростков и взрослых.</p>
+    </section>
+
     <section class="select" aria-labelledby="select-title">
       <h2 id="select-title">SELECT YOUR FIGHTER</h2>
       <ul class="slots">
@@ -104,21 +108,21 @@
           <button type="button" class="slot" data-pick="ребёнок" aria-pressed="false">
             <img class="slot__sprite slot__sprite--kid" src="img/kid.png" alt="" width="96" height="140">
             <h3>Ребёнок</h3>
-            <p>Характер, дисциплина, не «потыкали грушу».</p>
+            <p>С 6 лет. База и дисциплина: стойка, команда, зал без страха. Нагрузка маленькая, под ребёнка.</p>
           </button>
         </li>
         <li>
           <button type="button" class="slot" data-pick="подросток" aria-pressed="false">
             <img class="slot__sprite slot__sprite--teen" src="img/teen.png" alt="" width="96" height="180">
             <h3>Подросток</h3>
-            <p>Удар, голова, умение не сливаться.</p>
+            <p>Удар, дистанция, голова. Темп выше детского: свой раунд в спарринге, без слива.</p>
           </button>
         </li>
         <li>
           <button type="button" class="slot" data-pick="взрослый" aria-pressed="false">
             <img class="slot__sprite slot__sprite--adult" src="img/adult.png" alt="" width="96" height="230">
             <h3>Взрослый</h3>
-            <p>Форма, уверенность, навык, который работает не только в зале.</p>
+            <p>Техника и форма под уровень. Нагрузка по самочувствию. Ограничения по здоровью говоришь заранее.</p>
           </button>
         </li>
       </ul>
@@ -126,30 +130,57 @@
     </section>
 
     <section class="special" aria-labelledby="special-title">
-      <p class="special__tag">SPECIAL MOVE</p>
-      <h2 id="special-title">BLACK TIGER</h2>
+      <h2 id="special-title">Почему индивидуалки лучше группы?</h2>
       <div class="special__art">
         <img src="img/kick.png" alt="">
         <img src="img/blast.png" alt="">
       </div>
       <ol class="inputs">
-        <li><kbd>&gt;&gt;</kbd> разбор под тебя, не общее занятие на 20 человек</li>
-        <li><kbd>v &gt;</kbd> дети, подростки, взрослые — слоты разные, ковёр один</li>
-        <li><kbd>P+K</kbd> индивидуальные тренировки в СК «Олимп»</li>
+        <li><kbd>&gt;&gt;</kbd> в группе внимание делится на всех. Здесь ошибки правим сразу, время только твоё</li>
+        <li><kbd>v &gt;</kbd> в группе одна нагрузка на зал. Здесь темп под тебя, не под соседа</li>
+        <li><kbd>P+K</kbd> в группе общий план на 20 человек. Здесь занятие собрано под твою цель</li>
       </ol>
     </section>
 
     <section class="continue" aria-labelledby="continue-title">
       <p class="continue__timer" id="continue-timer">10</p>
-      <img class="continue__face" id="continue-face" src="img/ko.png" alt="" hidden>
+      <img class="continue__face" id="continue-face" src="img/ko.png" alt="Дмитрий Жуков">
       <h2 id="continue-title">CONTINUE?</h2>
-      <p>Первый раунд — напиши в Telegram.</p>
-      <a class="btn js-tg" href="https://t.me/Dima_zhyck" target="_blank" rel="noopener noreferrer">START · @Dima_zhyck</a>
+      <p id="continue-lead">Оставь заявку на занятие.</p>
+      <form class="lead" id="lead">
+        <label class="lead__field">
+          <span>ФИО</span>
+          <input name="name" type="text" required autocomplete="name" maxlength="80">
+        </label>
+        <fieldset class="lead__who">
+          <legend>Кто занимается</legend>
+          <label><input type="radio" name="who" value="ребёнок" required> Ребёнок</label>
+          <label><input type="radio" name="who" value="подросток"> Подросток</label>
+          <label><input type="radio" name="who" value="взрослый"> Взрослый</label>
+        </fieldset>
+        <label class="lead__field">
+          <span>Телефон</span>
+          <input name="phone" type="tel" required autocomplete="tel" inputmode="tel" maxlength="20">
+        </label>
+        <button class="btn" type="submit">Записаться на занятие</button>
+        <p class="lead__note" id="lead-note" hidden>Заявка принята.</p>
+      </form>
+      <p class="lead__or">Или напишите напрямую:</p>
+      <p class="contacts">
+        <a class="js-app" data-app="tg://resolve?domain=Dima_zhyck" href="https://t.me/Dima_zhyck">Telegram @Dima_zhyck</a>
+        <a href="tel:+79158976548">Max +7 915 897-65-48</a>
+        <a class="js-app" data-app="instagram://user?username=zhucck" href="https://www.instagram.com/zhucck/">Instagram @zhucck</a>
+      </p>
     </section>
 
     <footer class="foot">
+      <p><a class="btn" href="photos.html">Больше фото</a></p>
       <p>«Чёрный тигр» · Обнинск · СК «Олимп»</p>
-      <p><a href="https://t.me/Dima_zhyck">Telegram</a> · <a href="https://www.instagram.com/zhucck/">Instagram</a></p>
+      <p class="contacts">
+        <a class="js-app" data-app="tg://resolve?domain=Dima_zhyck" href="https://t.me/Dima_zhyck">Telegram</a>
+        <a href="tel:+79158976548">Max</a>
+        <a class="js-app" data-app="instagram://user?username=zhucck" href="https://www.instagram.com/zhucck/">Instagram</a>
+      </p>
     </footer>
   </div>
 

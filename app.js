@@ -113,7 +113,18 @@ document.querySelectorAll(".slot").forEach((btn) => {
     pick = btn.getAttribute("data-pick") || "";
     const foot = document.querySelector(".select__foot");
     if (foot) foot.textContent = `Выбран слот: ${pick}. Тренер один.`;
+    const who = document.querySelector(`input[name="who"][value="${pick}"]`);
+    if (who) who.checked = true;
     syncLinks();
+    bootAudio();
+    if (audio) {
+      audio.resume().then(() => {
+        if (!audio || audio.state !== "running") return;
+        const t = audio.currentTime + 0.01;
+        beep(880, 0.07, "square", 0.08, t);
+        beep(1320, 0.09, "square", 0.06, t + 0.06);
+      });
+    }
   });
 });
 
@@ -285,20 +296,70 @@ setInterval(() => {
   if (remain < 0) remain = 10;
   const ko = remain === 0;
   clock.hidden = ko;
-  if (face) face.hidden = !ko;
   if (!ko) clock.textContent = String(remain);
 }, 1000);
 
-document.querySelectorAll(".slot").forEach((btn) => {
-  btn.addEventListener("click", () => {
-    bootAudio();
-    if (!audio) return;
-    audio.resume().then(() => {
-      if (!audio || audio.state !== "running") return;
-      const t = audio.currentTime + 0.01;
-      beep(880, 0.07, "square", 0.08, t);
-      beep(1320, 0.09, "square", 0.06, t + 0.06);
+document.querySelectorAll('input[name="who"]').forEach((input) => {
+  input.addEventListener("change", () => {
+    if (!input.checked) return;
+    const slot = document.querySelector(`.slot[data-pick="${input.value}"]`);
+    if (!slot || slot.classList.contains("is-on")) return;
+    slot.click();
+  });
+});
+
+document.getElementById("lead")?.addEventListener("submit", async (event) => {
+  event.preventDefault();
+  const form = event.currentTarget;
+  if (!(form instanceof HTMLFormElement) || !form.reportValidity()) return;
+  const button = form.querySelector("button");
+  const note = document.getElementById("lead-note");
+  const data = new FormData(form);
+  button?.setAttribute("disabled", "");
+  if (note) note.hidden = true;
+  try {
+    const response = await fetch("/api/lead", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name: data.get("name"),
+        who: data.get("who"),
+        phone: data.get("phone"),
+      }),
     });
+    if (!response.ok) throw new Error("lead");
+    if (face) {
+      face.hidden = false;
+      face.src = "img/smile.png";
+      face.alt = "Дмитрий Жуков улыбается";
+    }
+    if (note) {
+      note.hidden = false;
+      note.textContent = "Заявка принята.";
+    }
+    const lead = document.getElementById("continue-lead");
+    if (lead) lead.textContent = "Заявка принята.";
+  } catch (err) {
+    button?.removeAttribute("disabled");
+    if (note) {
+      note.hidden = false;
+      note.textContent = "Не отправилось. Напиши тренеру в мессенджер.";
+    }
+  }
+});
+
+document.querySelectorAll(".js-app").forEach((link) => {
+  link.addEventListener("click", (event) => {
+    const app = link.getAttribute("data-app");
+    const web = link.getAttribute("href");
+    if (!app) return;
+    event.preventDefault();
+    const started = Date.now();
+    window.location.href = app;
+    setTimeout(() => {
+      if (document.hidden || Date.now() - started < 400) return;
+      window.open(web, "_blank", "noopener,noreferrer");
+    }, 900);
   });
 });
 
